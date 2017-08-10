@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { Item } from "./item";
 import { ItemService } from "./item.service";
+import * as firebase from "nativescript-plugin-firebase";
 
 @Component({
     selector: "ns-items",
@@ -17,5 +18,19 @@ export class ItemsComponent implements OnInit {
 
     ngOnInit(): void {
         this.items = this.itemService.getItems();
+
+        firebase.init()
+            .then(
+                () => {
+                    firebase.update(
+                        '/companies',
+                        {
+                            foo: 'Accion Labs',
+                            updateTs: firebase.ServerValue.TIMESTAMP
+                        }
+                    );
+                },
+                (error) => console.log("firebase.init error: " + error)
+            );
     }
 }
