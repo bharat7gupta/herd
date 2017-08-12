@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var counter_reducer_1 = require("./item/counter.reducer");
+exports.reducers = {
+    counter: counter_reducer_1.counterReducer
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmctc3RvcmUtcmVkdWNlcnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZy1zdG9yZS1yZWR1Y2Vycy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDBEQUF3RDtBQUUzQyxRQUFBLFFBQVEsR0FBRztJQUNwQixPQUFPLEVBQUUsZ0NBQWM7Q0FDMUIsQ0FBQSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGNvdW50ZXJSZWR1Y2VyIH0gZnJvbSAnLi9pdGVtL2NvdW50ZXIucmVkdWNlcic7XG5cbmV4cG9ydCBjb25zdCByZWR1Y2VycyA9IHtcbiAgICBjb3VudGVyOiBjb3VudGVyUmVkdWNlclxufSJdfQ==
