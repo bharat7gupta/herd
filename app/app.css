@@ -10,3 +10,20 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import 'nativescript-theme-core/css/forest.css';
+
+.heading-label {
+    font-size: 16px;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+
+.big-btn-text {
+    font-size: 24px;
+}
+
+.form-container {
+    margin: 20px 50px;
+}
+.form-container Button {
+    margin-top: 100px;
+}

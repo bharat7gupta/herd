@@ -1,0 +1,12 @@
+<ActionBar title="Add Group Category" class="action-bar"></ActionBar>
+
+<StackLayout class="form form-container">
+    <TextField hint="Category Name*" [(ngModel)]="category.name" class="input"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+    <TextField hint="Description" [(ngModel)]="category.description" class="input"></TextField>
+    <StackLayout class="hr-light"></StackLayout>
+
+    <Button text="Add" class="btn-primary" (tap)="addGroupCategory()" 
+        [class.btn-disabled]="!(groupCategory$ | async).processingSaveItem"
+        [isEnabled]="!(groupCategory$ | async).processingSaveItem"></Button>
+</StackLayout>

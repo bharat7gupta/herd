@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import { Store } from '@ngrx/store';
@@ -18,7 +19,8 @@ export class GroupCategoryList implements OnInit{
 
     constructor(
         private store: Store<GroupCategoriesState>,
-        private groupCategoryListService: GroupCategoryListService
+        private groupCategoryListService: GroupCategoryListService,
+        private router: Router
     ){
         this.groupCategories$ = store.select('groupCategories');
     }
@@ -36,7 +38,7 @@ export class GroupCategoryList implements OnInit{
         this.groupCategoryListService.loadGroupCategories();
     }
 
-    viewGroupCategory() {
-
+    addGroupCategory() {
+        this.router.navigate(["group-category/new"]);
     }
 }

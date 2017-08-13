@@ -1,19 +1,27 @@
 <ActionBar title="Herd" class="action-bar"></ActionBar>
 
-<GridLayout class="page" rows="*">
-    <ListView row="0" *ngIf="(groupCategories$ | async)?.loadSuccess" [items]="(groupCategories$ | async)?.categoryList" class="list-group">
+<GridLayout class="page" rows="auto, *">
+    <GridLayout row="0" rows="auto, auto" columns="*, auto">
+        <Label row="0" col="0" text="Choose Group Category" textWrap="true" class="heading-label"></Label>
+        <Button row="0" col="1" text="+" (tap)="addGroupCategory()" class="btn-primary font-weight-bold big-btn-text"></Button>
+        <StackLayout row="1" col="0" colspan="2" class="hr-light"></StackLayout>
+    </GridLayout>
+
+    <Label row="1" *ngIf="!(groupCategories$ | async)?.loading && (groupCategories$ | async)?.categoryList.length===0" text="Be the first to create a group category!" textWrap="true"></Label>
+
+    <ListView row="1" *ngIf="(groupCategories$ | async)?.loadSuccess" [items]="(groupCategories$ | async)?.categoryList" class="list-group">
         <ng-template let-item="item">
             <StackLayout>
-                <Label [text]="item.category" class="list-group-item"></Label>
+                <Label [text]="item.name" class="list-group-item"></Label>
             </StackLayout>
         </ng-template>
     </ListView>
 
-    <AbsoluteLayout row="0" marginTop='50%' marginLeft='50%' style="transform: translate(-50%, -25%)">
+    <AbsoluteLayout row="1" marginTop='50%' marginLeft='50%' style="transform: translate(-50%, -50%)">
         <Button  *ngIf="(groupCategories$ | async)?.loadError" text="Refresh"
             horizontal-alignment="center" min-width="200" (tap)="refresh()" class="btn-primary"></Button>
     </AbsoluteLayout>
 
-    <ActivityIndicator row="0" width="50" height="50" [busy]="(groupCategories$ | async)?.loading" class="activity-indicator"
+    <ActivityIndicator row="1" width="50" height="50" [busy]="(groupCategories$ | async)?.loading" class="activity-indicator"
         horizontal-alignment="center" vertical-alignment="center"></ActivityIndicator>
 </GridLayout>
