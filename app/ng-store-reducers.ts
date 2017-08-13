@@ -1,5 +1,5 @@
-import { counterReducer } from './item/counter.reducer';
+import { groupCategoriesReducer } from './pages/group-category-list/group-category-list.reducer';
 
 export const reducers = {
-    counter: counterReducer
+    groupCategories: groupCategoriesReducer
 }

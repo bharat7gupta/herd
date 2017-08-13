@@ -5,10 +5,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
-
-import { ItemService } from "./item/item.service";
+import { GroupCategoryList } from './pages/group-category-list/group-category-list.component';
+import { GroupCategoryListService } from './pages/group-category-list/group-category-list.service';
 
 import { reducers } from './ng-store-reducers';
 
@@ -30,11 +28,10 @@ import { reducers } from './ng-store-reducers';
     ],
     declarations: [
         AppComponent,
-        ItemsComponent,
-        ItemDetailComponent
+        GroupCategoryList
     ],
     providers: [
-        ItemService
+        GroupCategoryListService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
