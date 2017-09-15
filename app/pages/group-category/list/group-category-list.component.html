@@ -7,9 +7,10 @@
         <StackLayout row="1" col="0" colspan="2" class="hr-light"></StackLayout>
     </GridLayout>
 
-    <Label row="1" *ngIf="!(groupCategories$ | async)?.loading && (groupCategories$ | async)?.categoryList.length===0" text="Be the first to create a group category!" textWrap="true"></Label>
+    <Label row="1" *ngIf="!(groupCategories$ | async)?.loading && (groupCategories$ | async)?.list.length===0" 
+        text="Be the first to create a group category!" textWrap="true"></Label>
 
-    <ListView row="1" *ngIf="(groupCategories$ | async)?.loadSuccess" [items]="(groupCategories$ | async)?.categoryList" class="list-group">
+    <ListView row="1" *ngIf="(groupCategories$ | async)?.loadSuccess" [items]="(groupCategories$ | async)?.list" class="list-group">
         <ng-template let-item="item">
             <StackLayout>
                 <Label [text]="item.name" class="list-group-item"></Label>

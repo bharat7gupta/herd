@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
 
     ngOnInit() {
         firebase.init()
-                .then(  (result) => console.log("firebase init success"),
-                        (error) => console.log("firebase.init error: " + error));
+                .then((result) => {},
+                      (error) => console.log("firebase.init error: " + error));
     }
 }

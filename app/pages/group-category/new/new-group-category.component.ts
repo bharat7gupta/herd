@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
 import { Store } from '@ngrx/store';
 import * as Toast from 'nativescript-toast';
 
 import { GroupCategory } from '../../../shared/models/group-category';
-import { GroupCategoryListService } from '../group-category-list.service';
-import { GroupCategoriesState, GroupCategoryListActions } from '../group-category-list.reducer';
-import { GroupCategoryState } from './new-group-category.reducer';
-import { GroupCategoryActions } from './new-group-category.reducer';
+import { GroupCategoryService } from '../group-category.service';
+import * as newGroupCategory from '../new-group-category.reducer';
 
 @Component({
     moduleId: module.id,
@@ -19,11 +16,11 @@ import { GroupCategoryActions } from './new-group-category.reducer';
 export class NewGroupCategory implements OnInit{
 
     category: GroupCategory;
-    groupCategory$: Observable<GroupCategoryState>;
+    groupCategory$: Observable<newGroupCategory.State>;
 
     constructor(
-        private store: Store<GroupCategoryState>,
-        private groupCategoryListService: GroupCategoryListService,
+        private store: Store<newGroupCategory.State>,
+        private groupCategoryService: GroupCategoryService,
         private router: Router
     ) {
         this.category = new GroupCategory();
@@ -31,7 +28,7 @@ export class NewGroupCategory implements OnInit{
     }
 
     ngOnInit() {
-        this.store.dispatch({type: GroupCategoryActions.INITIALIZE});
+        this.store.dispatch({type: newGroupCategory.Actions.INITIALIZE});
         this.groupCategory$.subscribe((state)=> {
             if(state.errorMessage) {
                 Toast.makeText("Save Error: " + state.errorMessage).show();
@@ -47,7 +44,7 @@ export class NewGroupCategory implements OnInit{
         if(validationStr.length !== 0)
             Toast.makeText(validationStr).show();
         else {
-            this.groupCategoryListService.addCategory(this.category);
+            this.groupCategoryService.addCategory(this.category);
         }
     }
 }

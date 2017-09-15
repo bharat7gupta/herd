@@ -6,10 +6,11 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
-import { GroupCategoryList } from './pages/group-category-list/group-category-list.component';
-import { NewGroupCategory } from './pages/group-category-list/new-group-category/new-group-category.component';
-import { GroupCategoryListService } from './pages/group-category-list/group-category-list.service';
+import { GroupCategoryList } from './pages/group-category/list/group-category-list.component';
+import { NewGroupCategory } from './pages/group-category/new/new-group-category.component';
+import { GroupCategoryService } from './pages/group-category/group-category.service';
 import { CommonService } from './shared/services/common.service';
+import { FirebaseClientService } from './shared/services/firebase-client.service';
 
 import { reducers } from './app-reducers';
 
@@ -33,8 +34,9 @@ import { reducers } from './app-reducers';
         NewGroupCategory
     ],
     providers: [
-        GroupCategoryListService,
-        CommonService
+        GroupCategoryService,
+        CommonService,
+        FirebaseClientService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
