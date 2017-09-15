@@ -1,5 +1,4 @@
 export class GroupCategory {
-    id: string;
     name: string;
     description: string;
     createdDate: string;

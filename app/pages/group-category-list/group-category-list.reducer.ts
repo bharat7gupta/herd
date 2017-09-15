@@ -2,18 +2,10 @@ import { GroupCategory } from "../../shared/models/group-category";
 
 export interface GroupCategoriesState {
     categoryList: Array<GroupCategory>;
-    loading: boolean;
-    loadSuccess: boolean;
-    loadError: boolean;
-    errorMessage: string;
 }
 
 let initialState: GroupCategoriesState = {
-    categoryList: [],
-    loading: true,
-    loadSuccess: false,
-    loadError: false,
-    errorMessage: ""
+    categoryList: []
 }
 
 export const GroupCategoryListActions = {
@@ -28,7 +20,7 @@ export const groupCategoriesReducer = (state: GroupCategoriesState = initialStat
         case GroupCategoryListActions.ADD_ITEMS: 
             let items = Object.keys(payload).map((key) => {
                 let category = new GroupCategory();
-                category.id = key;
+                //category.id = key;
                 category.name = payload[key].name;
                 category.description = payload[key].description;
 
@@ -47,19 +39,8 @@ export const groupCategoriesReducer = (state: GroupCategoriesState = initialStat
             return initialState;
 
         case GroupCategoryListActions.LOAD_SUCCESS:
-            return Object.assign({}, state, {
-                loading: false,
-                loadSuccess: true,
-                loadError: false
-            });
-
         case GroupCategoryListActions.LOAD_ERROR:
-            return Object.assign({}, state, {
-                loading: false,
-                loadSuccess: false,
-                loadError: true,
-                errorMessage: payload
-            });
+            return Object.assign({}, state);
 
         default:
             return state;

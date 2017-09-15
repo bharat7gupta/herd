@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
@@ -6,15 +6,17 @@ import { Store } from '@ngrx/store';
 import * as Toast from 'nativescript-toast';
 
 import { GroupCategory } from '../../../shared/models/group-category';
-import { GroupCategoryListService } from '../group-category-list.service';
-import { GroupCategoriesState, GroupCategoryListActions } from '../group-category-list.reducer';
+import { GroupCategoryService } from '../group-category.service';
+// import { GroupCategoryState } from '../group-category.reducer';
+import * as groupCategory from '../group-category.reducer';
 import { GroupCategoryState } from './new-group-category.reducer';
 import { GroupCategoryActions } from './new-group-category.reducer';
 
 @Component({
     moduleId: module.id,
     selector: 'new-group-category',
-    templateUrl: './new-group-category.component.html'
+    templateUrl: './new-group-category.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewGroupCategory implements OnInit{
 
@@ -23,7 +25,7 @@ export class NewGroupCategory implements OnInit{
 
     constructor(
         private store: Store<GroupCategoryState>,
-        private groupCategoryListService: GroupCategoryListService,
+        private groupCategoryService: GroupCategoryService,
         private router: Router
     ) {
         this.category = new GroupCategory();
@@ -47,7 +49,7 @@ export class NewGroupCategory implements OnInit{
         if(validationStr.length !== 0)
             Toast.makeText(validationStr).show();
         else {
-            this.groupCategoryListService.addCategory(this.category);
+            // this.groupCategoryService.addCategory(this.category);
         }
     }
 }
